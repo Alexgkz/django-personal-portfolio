@@ -56,4 +56,6 @@ git push -u origin master
       from django.conf import settings
 вниз
       urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-13) Chekpoint, before lesson 4.5      
+13) Chekpoint, before lesson 4.5
+14) сайт НЕ ОТОБРАЖАЕТСЯ с домашней страницы, т.к. нет данных прописанных в настройках проекта
+надо создать стартовую страницу
