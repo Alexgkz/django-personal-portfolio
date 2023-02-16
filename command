@@ -41,3 +41,19 @@ git push -u origin master
 8.1) python manage.py migrate тоже
 9)python manage.py createsuperuser  log:alex pas:klop1234 смена пароля python manage.py changepassword Alex
 10)в файл admin.py   добавим какие модели будут доступны из админки (from .models import Project)
+10.1)  и admin.site.register(Project)
+зашли в админку там появилась папка Projects где можно +add добавлять "проекты" с моделями класса Progect
+11) добавили 1 экземпляр Progect, но файл сохранился в /portfolio/image, a мы хотели в папке project/media/Images для этого в settings.py добавим
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+12)Если в админке нажать на имя файла для отобр, будет ошибка исправим:
+  в файл urls.py добавим
+    from django.conf.urls.static import static
+
+  в файл settings.py
+    MEDIA_URL = 'media/'
+
+в файл urls.py добавим
+      from django.conf import settings
+вниз
+      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+13) Chekpoint, before lesson 4.5      
