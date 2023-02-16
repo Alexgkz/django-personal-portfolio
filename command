@@ -43,7 +43,7 @@ git push -u origin master
 10)в файл admin.py   добавим какие модели будут доступны из админки (from .models import Project)
 10.1)  и admin.site.register(Project)
 зашли в админку там появилась папка Projects где можно +add добавлять "проекты" с моделями класса Progect
-11) добавили 1 экземпляр Progect, но файл сохранился в /portfolio/image, a мы хотели в папке project/media/Images для этого в settings.py добавим
+11) добавили 1 экземпляр Progect object(1) через +add, но файл сохранился в /portfolio/image, a мы хотели в папке project/media/Images для этого в settings.py добавим
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 12)Если в админке нажать на имя файла для отобр, будет ошибка исправим:
   в файл urls.py добавим
@@ -59,3 +59,19 @@ git push -u origin master
 13) Chekpoint, before lesson 4.5
 14) сайт НЕ ОТОБРАЖАЕТСЯ с домашней страницы, т.к. нет данных прописанных в настройках проекта
 надо создать стартовую страницу
+15) импортируем все модели в код домашней страницы во view.py
+projects = Project.objects.all()
+  return render(request, 'portfolio/home.html', {'projects':projects})
+16)добавим в home.html {{ projects }} чтобы увидеть содержимое объекта(его __call__
+просто убедиться что данные импортировались
+чтобы просмотреть весь список сменим двойные фигурн скобки на одинарные с % и пройдем циклом.
+{% for project in projects %}
+{{ project }}
+{% endfor %}
+(для доступа из страницы к списку {{ xxx   }}  к словарю {% xxxx %} синтаксис django)
+так мы получим вывод имен экземпляров проекта (у нас пока 1: project object(1)
+если мы к элементу списка добавим через точку названия модели из .Model, то получим содержимое этого элемента класса
+{% for project in projects %}
+{{ project.title }}       >  "my first project"
+{{ project.description }}  > "This is my Description"
+{% endfor %}
