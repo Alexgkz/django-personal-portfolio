@@ -2,8 +2,9 @@
 cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
-
-
+git add -A
+git commit -m "after p17, lesson 4.5"
+git push -u origin master
 
 GIT
 
@@ -95,3 +96,28 @@ projects = Project.objects.all()
 br - возрат коретки
 
 Теперь мы можем через админку добавлять сколько угодно страниц, блогов и т.д.
+
+18) lesson 4.6 можем переходить к другим страницам по названию blog/:
+  path('blog/', include('blog.urls')),    - urls.py
+  вместо path('',views.home, name='home'),
+
+  надо создать в папке blog файл urls.py:
+
+  from django.urls import path
+  from . import views
+
+  urlpatterns = [
+      path('',views.all_blogs, name='all_blogs'
+  ]
+
+  как делали в personal_portfolio.
+  также делаем файл views.py в папке blog для страницы all_blogs:
+
+  from django.shortcuts import render
+
+  def all_blogs(request):
+      return render(request, 'blog/all_blogs.html')
+
+  далее делаем файл all_blogs.html аналогично personal_portfolio
+
+  в итоге все запросы включающие(include) "blog/" названии будут искаться в приложении blog и его файле urls.py
