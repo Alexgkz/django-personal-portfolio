@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p20, lesson 4.7"
+git commit -m "after p21, lesson 4.8"
 git push -u origin master
 
 GIT
@@ -130,3 +130,16 @@ def home(request):
     projects = Project.objects.all()
     return render(request, 'portfolio/home.html', {'projects':projects})
 блоги будут отсортированны по дате и будут выведены последние 5 штук
+
+21) добавляем статические файлы котор не могут изменить пользователи из админки
+например картинка на заглавной странице home.html
+{% load static %}
+
+<img src="{% static 'portfolio/1.jpg' %}">
+
+
+{% load static %} - обязательно перед любым обращениям к статик файлам, для которых мы сделали папку static/portfolio
+папка static прописана в STATIC_URL = 'static/' (setting.py), а путь к файлу:
+  portfolio\static\portfolio\1.jpg
+  Ссылка на сскачивание файла
+  <a href="{% static 'portfolio/2.pdf' %}">Certificate</a>
