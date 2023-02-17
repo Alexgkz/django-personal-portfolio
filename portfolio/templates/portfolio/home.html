@@ -1,7 +1,11 @@
 <h1>Alex's Portfolio</h1>
 
 {% for project in projects %}
-{{ project.title }}
-{{ project.description }}
+<h2>{{ project.title }}</h2>
+<p>{{ project.description }}</p>
+<img src="{{ project.image.url }}" height=220 width=180>
+{% if project.url %}
+<br><a href="{{ project.url }}">Link</a>
+{% endif %}
 
 {% endfor %}

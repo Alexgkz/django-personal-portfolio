@@ -1,5 +1,5 @@
 
-cd c:\Users\Professional\myDjangoFolder\passwordGenerator-project\
+cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 
@@ -75,3 +75,23 @@ projects = Project.objects.all()
 {{ project.title }}       >  "my first project"
 {{ project.description }}  > "This is my Description"
 {% endfor %}
+17)В итоге с выводом картинки и небольшим форматированием Вывод заголовка, коментария, картинки с размером в пикселях
+
+{% for project in projects %}
+<h2>{{ project.title }}</h2>
+<p>{{ project.description }}</p>
+<img src="{{ project.image.url }}" height=220 width=180>
+{% if project.url %}
+<a href="{{ project.url }}">Link</a>
+{% endif %}
+
+{% endfor %}
+
+
+если project.url существует то надо отобразить содержимое тега <a>:
+{% if project.url %}
+<br><a href="{{ project.url }}">Link</a>
+{% endif %}
+br - возрат коретки
+
+Теперь мы можем через админку добавлять сколько угодно страниц, блогов и т.д.
