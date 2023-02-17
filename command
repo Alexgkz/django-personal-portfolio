@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p17, lesson 4.5"
+git commit -m "after p20, lesson 4.7"
 git push -u origin master
 
 GIT
@@ -39,11 +39,11 @@ git push -u origin master
 6) В models.py добавить Класс и модели класса(виды объектов django field model)
 7)pip3 install pillow
 8)python manage.py makemigrations   - ввод изменений в модели, (после каждого изменения model)
-8.1) python manage.py migrate тоже
+8.1) python manage.py migrate тоже,
 9)python manage.py createsuperuser  log:alex pas:klop1234 смена пароля python manage.py changepassword Alex
 10)в файл admin.py   добавим какие модели будут доступны из админки (from .models import Project)
 10.1)  и admin.site.register(Project)
-зашли в админку там появилась папка Projects где можно +add добавлять "проекты" с моделями класса Progect
+зашли в админку там появилась папка Projects где можно +add добавлять "проекты" с моделями класса Project
 11) добавили 1 экземпляр Progect object(1) через +add, но файл сохранился в /portfolio/image, a мы хотели в папке project/media/Images для этого в settings.py добавим
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 12)Если в админке нажать на имя файла для отобр, будет ошибка исправим:
@@ -121,3 +121,12 @@ br - возрат коретки
   далее делаем файл all_blogs.html аналогично personal_portfolio
 
   в итоге все запросы включающие(include) "blog/" названии будут искаться в приложении blog и его файле urls.py
+
+19) создаю страницу blogs со списком блогов
+
+20) во views.py добавим .order_by('-data')[:5] вместо .all()
+
+def home(request):
+    projects = Project.objects.all()
+    return render(request, 'portfolio/home.html', {'projects':projects})
+блоги будут отсортированны по дате и будут выведены последние 5 штук

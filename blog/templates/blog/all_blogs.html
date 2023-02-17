@@ -1,1 +1,10 @@
-Hello blog
+<h1>Alex's Blog</h1>
+
+{% for blog in blogs %}
+<h2><a href="{{ blog.url }}">{{ blog.title }}</a></h2>
+<h5>{{ blog.data }}</h5>
+{% if blog.image.url %}
+<img src="{{ blog.image.url }}" height=220 width=180>
+{% endif %}
+
+{% endfor %}
