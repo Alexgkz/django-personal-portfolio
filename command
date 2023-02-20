@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p25, lesson 4.10"
+git commit -m "after p33, lesson 4.11"
 git push -u origin master
 
 GIT
@@ -165,7 +165,7 @@ def home(request):
 изменяем файл detail.html для шаблона блога(пока только заголовок):
           {{ blog.title }}
 после всего этого у нас при наборе url=http://127.0.0.1:8000/blog/2/
-выводится заголовок блога blog.title, если такого екземпляра(№2) нет то будет ОШИБКА 404 нет страницы
+выводится заголовок блога blog.title, если такого экземпляра(№2) нет то будет ОШИБКА 404 'нет страницы'
 
 24) для того что выводилась страница блога нажатием на заголовок на странице all_blogs
 дорабатываем all_blogs.html (href="{% url 'detail' blog.id %}):
@@ -177,3 +177,25 @@ def home(request):
   и чтобы не было ошибки в all_blogs.html добавим 'blog:', чтобы джанго знала
   что эту функцию 'detail' искать во views.py приложения app_name = 'blog'
   <h2><a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a></h2>
+26) lesson 4.11 счетчик блоков в all_blogs.html
+<h2>Alex has written {{blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+{{ blogs.count|pluralize }} - добавляет букву "s" к словам во множественном числе.
+27) перенастройка формата вывода даты
+<h5>{{ blog.data|date:'M d Y' }}</h5>
+28) ограничение количества (100) выводимых символов не используя срезы
+<p>{{ blog.description|safe|truncatechars:100 }}</p>
+29) чтобы в тексте работали теги <b></b>, <p></p> и др. добавим |safe до truncatechars
+<p>{{ blog.description|safe|truncatechars:100 }}</p>
+30)если вместо safe ввести striptags, то теги деактивируются и уберутся из выведенного текста
+31)добавили дату в detail.html
+<h2>-- {{ blog.data|date:'F jS Y' }} --</h2>
+вывод: --February 17th 2023--      #  jS -это буквы th после даты
+32) Добавили текст description в detail.
+{{ blog.description|safe }}
+
+
+33) чтобы в админке вместо blog object 1, blog object 2... выводились заголовки блогов
+для Blog или заголовки приложений для portfolio добавляем в их model.py в нужный класс:
+      def __str__(self):
+          return self.title
+34) lesson 4.12
