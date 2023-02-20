@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p21, lesson 4.8"
+git commit -m "after p25, lesson 4.10"
 git push -u origin master
 
 GIT
@@ -143,3 +143,37 @@ def home(request):
   portfolio\static\portfolio\1.jpg
   Ссылка на сскачивание файла
   <a href="{% static 'portfolio/2.pdf' %}">Certificate</a>
+
+22) p.4.10 Detail Здесь мы сделаем так чтобы автоматически создавались ссылки на каждый экземпляр блога по его ID.
+Для этого urls.py добавляем строку:
+        path('<int:blog_id/>',views.detail, name='detail'),
+в views.py добавляем функцию:
+      def detail(request, blog_id):
+          return render(request, 'blog/detail.html', {'id':blog_id})
+  создаем файл detail.html для шаблона блога(пока только id):
+  {{ id }}
+  после этих добавлений пришлось перезапустить сервер
+  после всего этого у нас при наборе url=http://127.0.0.1:8000/blog/11/
+  выводится страница с цифрой '11' ({{ id }}
+
+23) Для связи со страницей блога делаем следуюющее:
+в views.py изменяем функцию detail:
+    from django.shortcuts import render, get_object_or_404
+      def detail(request, blog_id):
+          blog = get_object_or_404(Blog, pk=blog_id)
+          return render(request, 'blog/detail.html', {'blog':blog})
+изменяем файл detail.html для шаблона блога(пока только заголовок):
+          {{ blog.title }}
+после всего этого у нас при наборе url=http://127.0.0.1:8000/blog/2/
+выводится заголовок блога blog.title, если такого екземпляра(№2) нет то будет ОШИБКА 404 нет страницы
+
+24) для того что выводилась страница блога нажатием на заголовок на странице all_blogs
+дорабатываем all_blogs.html (href="{% url 'detail' blog.id %}):
+<h2><a href="{% url 'detail' blog.id %}" {{ blog.title }}</a></h2>
+25) это работает, но не совсем так как надо, если у нас будет несколько приложений
+в сайте с применением detailб то надо чтобы джанго их раздичала для этого
+в blog/urls.py добавим:
+    app_name = 'blog'
+  и чтобы не было ошибки в all_blogs.html добавим 'blog:', чтобы джанго знала
+  что эту функцию 'detail' искать во views.py приложения app_name = 'blog'
+  <h2><a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a></h2>
