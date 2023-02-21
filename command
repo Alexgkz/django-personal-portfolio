@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p33, lesson 4.11"
+git commit -m "after p34, lesson 4.12"
 git push -u origin master
 
 GIT
@@ -198,4 +198,27 @@ def home(request):
 для Blog или заголовки приложений для portfolio добавляем в их model.py в нужный класс:
       def __str__(self):
           return self.title
-34) lesson 4.12
+34) lesson 4.12 улучшение с bootstrap. Добавление строки навигации сверху.
+1)Зашли на https://getbootstrap.com/docs/5.3/getting-started/introduction/
+скопировали готовый шаблон и поместили свою html страницу в тег Body
+2) в Bootstrap в поиске набрали navbar, нашли страницу и скопировали скрипт в body
+перед кодом страницы.
+3) тоже самое (1-2)можем сделать  для all_blogs, detail.
+Но это неудобно, поэтому обычно делают шаблон страницы который редактируется 1 раз для всех страниц.
+Создаем файл base.html и копируем туда содержимое home.html. убираем текст тела страницы кроме bootstrap.
+и вместо этого тела добавляем {% block content %}{% endblock %}
+
+теперь во всех файлах страниц .html добаляем сначала код:
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+и в конце:
+{% endblock %}
+Это позволит загрузить базовую страницу 'portfolio/base.html' и
+вставит то что между тегами {% block content %}  {% endblock %} между этими же тегами
+в базовой странице.
+
+Вот теперь выполняем пункт 3 для all_blogs, detail. Все страницы в едином стиле.
+
+35)lesson 4.13. настройка navbar
