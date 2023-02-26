@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after 40, lesson 5.5"
+git commit -m "after p39, lesson 5.4"
 git push -u origin master
 
 https://www.pythonanywhere.com bash:
@@ -299,7 +299,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')  -это подскажет гд�
 На странице WEB в разделе Security:   кнопку  Force HTTPS: сделать enabled.
 для постоянно защищенного соединения.
 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
-40) les 5.5 Создаем файл gitignore чтобы указать что не надо обновлять из github на server'e
+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
+40) les 5.5 Создаем файл gitignore чтобы указать что не надо обновлять из github.
 для этого вводим в браузере gitignore.io пишем django нажимаем Enter и нажимаем Create.
 появляется большой файл из которого нас интересует только начало:
 ### Django ###
@@ -326,3 +327,19 @@ git add .
 делаем изменение на github чтобы правки в коде перешли в репозит надо знать username и token:
 git push origin или
 git push origin HEAD:main
+
+41) less 5.6  чтобы изменения на сервере не влияли на работу сайта на локальном компе сделаем следующие:
+в папке personal_portfolio\ создадим файл local_settings.py
+а в конце оригинального файла settings.py допишем:
+try:
+    from .local_settings import *     
+except ImportError:
+    print("Looks like no local file. You must be on production")
+	
+- этим мы заменяем настройки в settings.py теми которые есть в local_settings.py
+а на Prodaction (сервер) local_settings.py через git передаваться не будет.
+
+
+	
+
+
