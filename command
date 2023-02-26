@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p39, lesson 5.4"
+git commit -m "after 40, lesson 5.5"
 git push -u origin master
 
 https://www.pythonanywhere.com bash:
@@ -298,5 +298,31 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')  -это подскажет гд�
 
 На странице WEB в разделе Security:   кнопку  Force HTTPS: сделать enabled.
 для постоянно защищенного соединения.
+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
+40) les 5.5 Создаем файл gitignore чтобы указать что не надо обновлять из github на server'e
+для этого вводим в браузере gitignore.io пишем django нажимаем Enter и нажимаем Create.
+появляется большой файл из которого нас интересует только начало:
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
 
-40) les 5.5 
+в консоле pythonanywhere.com' зайдем в папку /django4-personal-portfolio и введем команду:
+nano .gitignore и добавим строчки выше. ctrl+x выход с сохр изменений.
+далее вводим git add .gitignore
+git config --global user.email 'alexgkz@mail.ru'
+git config --global user.name "Alexgkz"
+git commit -m "p40 l5.5 gitignore added"
+
+
+созданные файлы все равно не удаляются из git status .
+что бы все работало как надо надо ввести две команды:
+git rm -r --cached .
+git add .
+и  вводим git commit -m "Remove old stuff" чтобы ввести изменения в буфер и удалим не нужные файлы
+
+делаем изменение на github чтобы правки в коде перешли в репозит надо знать username и token:
+git push origin или
+git push origin HEAD:main
