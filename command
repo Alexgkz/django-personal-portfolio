@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p38, lesson 5.3"
+git commit -m "after p39, lesson 5.4"
 git push -u origin master
 
 https://www.pythonanywhere.com bash:
@@ -275,4 +275,28 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'personal_portfolio.settings' измен�
 в странице Web  в разделе Сode  Source code: нажимаем go to directory ищем файл изменяем и сохраняем и делаем ReLoad.
 'ReLoad Alexgkz.pythonanywhere.com' надо делать при любом изменении в проекте.
 сайт загрузится но пока не настроены static файлы и др. мелочи.
-39) less 5.4
+
+39) less 5.4 зайдем в файл setting.py и поменяем  DEBUG = True на DEBUG = False,
+это отключит встроенный дебаг Джанго. и в случае ошибок не будут разглашаться данные проекта.
+Далее для вывода статических файлов добавляем нижнюю строку:
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  -это подскажет где искать файлы static.
+теперь в консоле pythonanywhere.com' зайдем в папку где находится manage.py (~/django4-personal-portfolio)
+вводим команду которая скопирует все статические файлы (всех приложений проекта )в папку,
+которая выведется после выполнения команды: /home/Alexgkz/django4-personal-portfolio/static
+мы ее задали выше.
+На странице WEB в разделе Static files:
+в столбе URL вставим /static/
+в столбе Directory вставим /home/Alexgkz/django4-personal-portfolio/static
+что значит все значения в URL /static/ искать в папке /home/Alexgkz/django4-personal-portfolio/static
+
+делаем тоже самое для media файлов:
+На странице WEB в разделе Static files:
+в столбе URL вставим /media/
+в столбе Directory вставим /home/Alexgkz/django4-personal-portfolio/media
+что значит все значения в URL /media/ искать в папке /home/Alexgkz/django4-personal-portfolio/media
+
+На странице WEB в разделе Security:   кнопку  Force HTTPS: сделать enabled.
+для постоянно защищенного соединения.
+
+40) les 5.5 
