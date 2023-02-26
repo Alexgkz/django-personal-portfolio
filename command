@@ -40,7 +40,7 @@ git push -u origin master
 7)pip3 install pillow
 8)python manage.py makemigrations   - ввод изменений в модели, (после каждого изменения model)
 8.1) python manage.py migrate тоже,
-9)python manage.py createsuperuser  log:alex pas:klop1234 смена пароля python manage.py changepassword Alex
+9)python manage.py createsuperuser  log:alex pas:xxxxx смена пароля python manage.py changepassword Alex
 10)в файл admin.py   добавим какие модели будут доступны из админки (from .models import Project)
 10.1)  и admin.site.register(Project)
 зашли в админку там появилась папка Projects где можно +add добавлять "проекты" с моделями класса Project
@@ -221,4 +221,4 @@ def home(request):
 
 Вот теперь выполняем пункт 3 для all_blogs, detail. Все страницы в едином стиле.
 
-35)lesson 4.13. настройка navbar добавка страницы About.
+35)lesson 4.13. настройка navbar добавка страницы About2
