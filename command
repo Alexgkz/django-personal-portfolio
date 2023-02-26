@@ -3,8 +3,17 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p36, lesson 5.1"
+git commit -m "after p37, lesson 5.3"
 git push -u origin master
+
+https://www.pythonanywhere.com bash:
+
+workon portfoliovenv        -вход в виртуальное окружение 'portfoliovenv'
+deactivate                  -выход
+узнать все доступные вирт окруж(2 строки):
+cd .virtualenvs/
+ls
+
 
 GIT
 
@@ -223,9 +232,14 @@ def home(request):
 
 35)lesson 4.13. настройка navbar добавка страницы About2
 
- разворачивание сайта https://www.pythonanywhere.com
+ РАЗВОРАЧИВАНИЕ сайта https://www.pythonanywhere.com
 
  36) lesson 5.1 зарегистрировались в https://www.pythonanywhere.com и зашли в $Bash в нижнем левом углу.
  (это консоль linux витртуального сервера )
  там ввели команду git clone https://github.com/Alexgkz/django4-personal-portfolio.git и скопировали проект с GitHub
- 37)
+ 37) les 5.2 перешли в папку django4-personal-portfolio.git  cd django4-personal-portfolio.git
+ и ввели mkvirtualenv --python=/usr/bin/python3.8 portfoliovenv -что устанавливает python3.8(.10 по факту) в виртуальное окружение с именем 'portfoliovenv'
+ workon portfoliovenv       -вход в виртуальное окружение 'portfoliovenv' если вышли из Bash
+ установим django  и pillow:
+ pip install django pillow
+ 38) les 5.3
