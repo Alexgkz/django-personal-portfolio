@@ -3,7 +3,7 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p34, lesson 4.12"
+git commit -m "after p36, lesson 5.1"
 git push -u origin master
 
 GIT
@@ -222,3 +222,10 @@ def home(request):
 Вот теперь выполняем пункт 3 для all_blogs, detail. Все страницы в едином стиле.
 
 35)lesson 4.13. настройка navbar добавка страницы About2
+
+ разворачивание сайта https://www.pythonanywhere.com
+
+ 36) lesson 5.1 зарегистрировались в https://www.pythonanywhere.com и зашли в $Bash в нижнем левом углу.
+ (это консоль linux витртуального сервера )
+ там ввели команду git clone https://github.com/Alexgkz/django4-personal-portfolio.git и скопировали проект с GitHub
+ 37)
