@@ -221,4 +221,4 @@ def home(request):
 
 Вот теперь выполняем пункт 3 для all_blogs, detail. Все страницы в едином стиле.
 
-35)lesson 4.13. настройка navbar
+35)lesson 4.13. настройка navbar добавка страницы About.
