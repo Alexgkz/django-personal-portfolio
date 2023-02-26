@@ -3,16 +3,20 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p37, lesson 5.3"
+git commit -m "after p38, lesson 5.3"
 git push -u origin master
 
 https://www.pythonanywhere.com bash:
+cd django4-personal-portfolio/
+workon portfoliovenv
 
 workon portfoliovenv        -вход в виртуальное окружение 'portfoliovenv'
 deactivate                  -выход
 узнать все доступные вирт окруж(2 строки):
 cd .virtualenvs/
 ls
+
+pwd текущий путь
 
 
 GIT
@@ -242,4 +246,33 @@ def home(request):
  workon portfoliovenv       -вход в виртуальное окружение 'portfoliovenv' если вышли из Bash
  установим django  и pillow:
  pip install django pillow
- 38) les 5.3
+ 38) les 5.3 зайдем в папку проекта cd django4-personal-portfolio/
+ и введя pwd узнаем полный путь к приложению.
+ Дальше в браузере заходим в раздел WEB  на сайте https://www.pythonanywhere.com.
+ наажимаем кнопку +Add a new web app/ там будет предупреждение, что в бесплатном аккаунте адрес сайта будет Alexgkz.pythonanywhere.com
+ далее можно выбрать фреймворк Django и сделать все в автомате, но мы выберем мануал.
+ в следующем окне выберем python3.8 и далее 2 раза пока не появится Configuration for Alexgkz.pythonanywhere.com
+
+ в разделе Virtualenv:  вводим название вирт окружен portfoliovenv и нажимаем ввод.
+
+ в разделе Сode меняем Source code: это путь к проекту '/home/Alexgkz/django4-personal-portfolio'
+ в разделе Сode меняем Working directory: это путь к проекту '/home/Alexgkz/django4-personal-portfolio'
+ в нашем случае они совпадают.
+
+в разделе Сode щелкаем по файлу WSGI configuration file:/var/www/alexgkz_pythonanywhere_com_wsgi.py
+и оставляем только раздел Django  остальное удаляем.
+он "за'комент'ирован", раз'коммент'ируем выделив все кроме:
+# +++++++++++ DJANGO +++++++++++
+# To use your own django app use code like this:
+и нажав ctrl+/
+далее изменить путь path = '/home/Alexgkz/django4-personal-portfolio'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'personal_portfolio.settings' изменим путь к файлу setting.py как к модулю через точку
+нажать кнопку  Save (зеленая в верхней строке)
+перейдем на гл страницу https://www.pythonanywhere.com/user/Alexgkz/ нажав на питона в верхнем левом углу.
+ заходим в раздел WEB. перегружаем сайт нажав кнопку 'Reload Alexgkz.pythonanywhere.com'.
+
+ надо в файле setting.py внести изменения с помощью редактора:
+в странице Web  в разделе Сode  Source code: нажимаем go to directory ищем файл изменяем и сохраняем и делаем ReLoad.
+'ReLoad Alexgkz.pythonanywhere.com' надо делать при любом изменении в проекте.
+сайт загрузится но пока не настроены static файлы и др. мелочи.
+39) less 5.4
