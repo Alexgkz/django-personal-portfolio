@@ -23,7 +23,7 @@ git checkout + желтый номер в списке Commit`ов.
 
 Для git hub (в хабе есть подсказка для команд)
 git remote add origin https://github.com/Alexgkz/НАЗВАНИЕ ПРОекта в хабе.git
-branch -M master
+git branch -M master
 git push -u origin master
 
 
