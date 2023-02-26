@@ -3,8 +3,11 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m "after p39, lesson 5.4"
+git commit -m " p41, lesson 5.6 new local setting"
 git push -u origin master
+
+
+git pull origin master -загрузка на https://www.pythonanywhere.com bash:
 
 https://www.pythonanywhere.com bash:
 cd django4-personal-portfolio/
@@ -332,14 +335,12 @@ git push origin HEAD:main
 в папке personal_portfolio\ создадим файл local_settings.py
 а в конце оригинального файла settings.py допишем:
 try:
-    from .local_settings import *     
+    from .local_settings import *
 except ImportError:
     print("Looks like no local file. You must be on production")
-	
+
 - этим мы заменяем настройки в settings.py теми которые есть в local_settings.py
 а на Prodaction (сервер) local_settings.py через git передаваться не будет.
 
 
 	
-
-
