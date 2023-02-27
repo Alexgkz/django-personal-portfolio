@@ -3,24 +3,8 @@ cd c:\Users\Professional\myDjangoFolder\personalPortfolio-project\
 python manage.py runserver
 
 git add -A
-git commit -m " p41, lesson 5.6 new local setting"
+git commit -m "after p34, lesson 4.12"
 git push -u origin master
-
-
-git pull origin master -загрузка на https://www.pythonanywhere.com bash:
-
-https://www.pythonanywhere.com bash:
-cd django4-personal-portfolio/
-workon portfoliovenv
-
-workon portfoliovenv        -вход в виртуальное окружение 'portfoliovenv'
-deactivate                  -выход
-узнать все доступные вирт окруж(2 строки):
-cd .virtualenvs/
-ls
-
-pwd текущий путь
-
 
 GIT
 
@@ -39,7 +23,7 @@ git checkout + желтый номер в списке Commit`ов.
 
 Для git hub (в хабе есть подсказка для команд)
 git remote add origin https://github.com/Alexgkz/НАЗВАНИЕ ПРОекта в хабе.git
-git branch -M master
+branch -M master
 git push -u origin master
 
 
@@ -238,109 +222,3 @@ def home(request):
 Вот теперь выполняем пункт 3 для all_blogs, detail. Все страницы в едином стиле.
 
 35)lesson 4.13. настройка navbar добавка страницы About2
-
- РАЗВОРАЧИВАНИЕ сайта https://www.pythonanywhere.com
-
- 36) lesson 5.1 зарегистрировались в https://www.pythonanywhere.com и зашли в $Bash в нижнем левом углу.
- (это консоль linux витртуального сервера )
- там ввели команду git clone https://github.com/Alexgkz/django4-personal-portfolio.git и скопировали проект с GitHub
- 37) les 5.2 перешли в папку django4-personal-portfolio.git  cd django4-personal-portfolio.git
- и ввели mkvirtualenv --python=/usr/bin/python3.8 portfoliovenv -что устанавливает python3.8(.10 по факту) в виртуальное окружение с именем 'portfoliovenv'
- workon portfoliovenv       -вход в виртуальное окружение 'portfoliovenv' если вышли из Bash
- установим django  и pillow:
- pip install django pillow
- 38) les 5.3 зайдем в папку проекта cd django4-personal-portfolio/
- и введя pwd узнаем полный путь к приложению.
- Дальше в браузере заходим в раздел WEB  на сайте https://www.pythonanywhere.com.
- наажимаем кнопку +Add a new web app/ там будет предупреждение, что в бесплатном аккаунте адрес сайта будет Alexgkz.pythonanywhere.com
- далее можно выбрать фреймворк Django и сделать все в автомате, но мы выберем мануал.
- в следующем окне выберем python3.8 и далее 2 раза пока не появится Configuration for Alexgkz.pythonanywhere.com
-
- в разделе Virtualenv:  вводим название вирт окружен portfoliovenv и нажимаем ввод.
-
- в разделе Сode меняем Source code: это путь к проекту '/home/Alexgkz/django4-personal-portfolio'
- в разделе Сode меняем Working directory: это путь к проекту '/home/Alexgkz/django4-personal-portfolio'
- в нашем случае они совпадают.
-
-в разделе Сode щелкаем по файлу WSGI configuration file:/var/www/alexgkz_pythonanywhere_com_wsgi.py
-и оставляем только раздел Django  остальное удаляем.
-он "за'комент'ирован", раз'коммент'ируем выделив все кроме:
-# +++++++++++ DJANGO +++++++++++
-# To use your own django app use code like this:
-и нажав ctrl+/
-далее изменить путь path = '/home/Alexgkz/django4-personal-portfolio'
-os.environ['DJANGO_SETTINGS_MODULE'] = 'personal_portfolio.settings' изменим путь к файлу setting.py как к модулю через точку
-нажать кнопку  Save (зеленая в верхней строке)
-перейдем на гл страницу https://www.pythonanywhere.com/user/Alexgkz/ нажав на питона в верхнем левом углу.
- заходим в раздел WEB. перегружаем сайт нажав кнопку 'Reload Alexgkz.pythonanywhere.com'.
-
- надо в файле setting.py внести изменения с помощью редактора:
-в странице Web  в разделе Сode  Source code: нажимаем go to directory ищем файл изменяем и сохраняем и делаем ReLoad.
-'ReLoad Alexgkz.pythonanywhere.com' надо делать при любом изменении в проекте.
-сайт загрузится но пока не настроены static файлы и др. мелочи.
-
-39) less 5.4 зайдем в файл setting.py и поменяем  DEBUG = True на DEBUG = False,
-это отключит встроенный дебаг Джанго. и в случае ошибок не будут разглашаться данные проекта.
-Далее для вывода статических файлов добавляем нижнюю строку:
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  -это подскажет где искать файлы static.
-теперь в консоле pythonanywhere.com' зайдем в папку где находится manage.py (~/django4-personal-portfolio)
-вводим команду которая скопирует все статические файлы (всех приложений проекта )в папку,
-которая выведется после выполнения команды: /home/Alexgkz/django4-personal-portfolio/static
-мы ее задали выше.
-На странице WEB в разделе Static files:
-в столбе URL вставим /static/
-в столбе Directory вставим /home/Alexgkz/django4-personal-portfolio/static
-что значит все значения в URL /static/ искать в папке /home/Alexgkz/django4-personal-portfolio/static
-
-делаем тоже самое для media файлов:
-На странице WEB в разделе Static files:
-в столбе URL вставим /media/
-в столбе Directory вставим /home/Alexgkz/django4-personal-portfolio/media
-что значит все значения в URL /media/ искать в папке /home/Alexgkz/django4-personal-portfolio/media
-
-На странице WEB в разделе Security:   кнопку  Force HTTPS: сделать enabled.
-для постоянно защищенного соединения.
-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
-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
-40) les 5.5 Создаем файл gitignore чтобы указать что не надо обновлять из github.
-для этого вводим в браузере gitignore.io пишем django нажимаем Enter и нажимаем Create.
-появляется большой файл из которого нас интересует только начало:
-### Django ###
-*.log
-*.pot
-*.pyc
-__pycache__/
-local_settings.py
-
-в консоле pythonanywhere.com' зайдем в папку /django4-personal-portfolio и введем команду:
-nano .gitignore и добавим строчки выше. ctrl+x выход с сохр изменений.
-далее вводим git add .gitignore
-git config --global user.email 'alexgkz@mail.ru'
-git config --global user.name "Alexgkz"
-git commit -m "p40 l5.5 gitignore added"
-
-
-созданные файлы все равно не удаляются из git status .
-что бы все работало как надо надо ввести две команды:
-git rm -r --cached .
-git add .
-и  вводим git commit -m "Remove old stuff" чтобы ввести изменения в буфер и удалим не нужные файлы
-
-делаем изменение на github чтобы правки в коде перешли в репозит надо знать username и token:
-git push origin или
-git push origin HEAD:main
-
-41) less 5.6  чтобы изменения на сервере не влияли на работу сайта на локальном компе сделаем следующие:
-в папке personal_portfolio\ создадим файл local_settings.py
-а в конце оригинального файла settings.py допишем:
-try:
-    from .local_settings import *
-except ImportError:
-    print("Looks like no local file. You must be on production")
-
-- этим мы заменяем настройки в settings.py теми которые есть в local_settings.py
-а на Prodaction (сервер) local_settings.py через git передаваться не будет.
-
-
-	
