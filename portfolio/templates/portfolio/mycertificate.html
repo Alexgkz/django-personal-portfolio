@@ -1,0 +1,31 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+                       <h1>My Certificate</h1>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+
+        <div class="list-group">
+
+            <!-- #тег "a" href=" делает строку гиперссылкой при клике на которую происходит переход на   -->
+                  <a href="{% static 'portfolio/2.pdf'  %}" class="list-group-item list-group-item-action">
+                        <b>1. Полный курс Python для начинающих – с нуля до специалиста</b>
+                        <img src="{% static "portfolio/python.jpg" %}" class="img-fluid" alt="python">
+                  </a>
+                  <a href="{% static 'portfolio/3.pdf'  %}" class="list-group-item list-group-item-action">
+                        <b>2. Django 3 - Full Stack разработка веб сайтов на Python</b>
+                        <img src="{% static "portfolio/django-python.jpg" %}" class="img-fluid" alt="django-python">
+                  </a>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
